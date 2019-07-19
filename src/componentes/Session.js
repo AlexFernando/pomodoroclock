@@ -8,10 +8,8 @@ class Session extends Component {
         if(this.props.changeBreak === true) {
             return(
                 <div>
-
-            <p>Break 5min</p>
-                    <p>{this.props.minutesSession}</p>
-                    <p>{this.props.seconds}</p>
+                    <p className="title-time" >Break: <span>5 min</span></p>
+                    <p className="time">{this.props.minutesSession} : {this.props.seconds}</p>
                 </div>
             )
         } 
@@ -20,7 +18,6 @@ class Session extends Component {
         <div>
             <p className="title-time">Sesion: <span>25 min</span></p>
             <p className="time">{this.props.minutesSession} : {this.props.seconds}</p>
-            
         </div> 
         );
     }
