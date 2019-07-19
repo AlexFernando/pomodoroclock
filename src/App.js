@@ -10,7 +10,7 @@ import './App.css'
 
 class App extends Component {
   state = { 
-    minutesSession : 25,
+    minutesSession : 2,
     seconds : "00",
     changeBrake : false
   }
@@ -29,7 +29,7 @@ class App extends Component {
 
         console.log('Hola cuando 0 y 0')
         this.setState({
-          minutesSession : 5,
+          minutesSession : 2,
           seconds : "00",
         })
         //clearInterval(this.myInterval)
@@ -49,10 +49,11 @@ class App extends Component {
          
         let audio = new Audio('https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg');
         audio.play();
+
         
         this.setState({
           
-          minutesSession : 25,
+          minutesSession : 1,
           seconds : "00",
           changeBreak: false
         })
@@ -136,10 +137,10 @@ class App extends Component {
 
         <div>
           <Button>
-            <FontAwesomeIcon icon={faPlay} onClick = {this.startCountdown} ></FontAwesomeIcon>
+            <FontAwesomeIcon icon={faPlay} onClick = {this.startCountdown}></FontAwesomeIcon>
           </Button>
           <Button>
-            <FontAwesomeIcon icon={faPause} onClick = {this.stopCountDown} ></FontAwesomeIcon>
+            <FontAwesomeIcon icon={faPause} onClick = {this.stopCountDown}></FontAwesomeIcon>
           </Button>
           <Button>
             <FontAwesomeIcon icon={faRedoAlt} onClick = {this.reloadCountdown}></FontAwesomeIcon>
