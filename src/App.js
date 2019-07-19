@@ -5,20 +5,20 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faPlay, faWheelchair } from '@fortawesome/free-solid-svg-icons';
 import { faPause } from '@fortawesome/free-solid-svg-icons';
 import { faRedoAlt } from '@fortawesome/free-solid-svg-icons';
-
+import logo from './img/alpaca.png';
+import './App.css'
 
 class App extends Component {
   state = { 
-    minutesSession : 1,
-    seconds : 0,
-    minutesBreak : 5,
+    minutesSession : 25,
+    seconds : "00",
     changeBrake : false
   }
 
   setOriginalTime = () => {
     this.setState({
       minutesSession : 25,
-      seconds : 0,
+      seconds : "00",
     })
   }
 
@@ -29,8 +29,8 @@ class App extends Component {
 
         console.log('Hola cuando 0 y 0')
         this.setState({
-          minutesSession : 1,
-          seconds : 0,
+          minutesSession : 5,
+          seconds : "00",
         })
         //clearInterval(this.myInterval)
 
@@ -52,8 +52,8 @@ class App extends Component {
         
         this.setState({
           
-          minutesSession : 1,
-          seconds : 0,
+          minutesSession : 25,
+          seconds : "00",
           changeBreak: false
         })
       }
@@ -68,7 +68,7 @@ class App extends Component {
         console.log("hola 1")
         this.setState({
           minutesSession : this.minutesRemaining - 1,
-          seconds : 12,
+          seconds : 60,
         })
 
         if(this.state.minutesSession < 10) { 
@@ -101,7 +101,7 @@ class App extends Component {
 
     this.setState({
       minutesSession : 25,
-      seconds : 0,
+      seconds : "00",
       minutesBreak : 5
     })
 
@@ -119,8 +119,15 @@ class App extends Component {
 
   render() { 
     return ( 
-    <div>
-        Pomodoro Clock
+    <div className="container">
+        <h1>Pomodoro Clock</h1>
+
+        <div>
+          <img  className="image" src={logo}  alt="Logo" />
+        </div>
+
+        <h2>Be productive!</h2>
+
         <Session 
           minutesSession = {this.state.minutesSession}
           seconds = {this.state.seconds}

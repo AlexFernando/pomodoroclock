@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './Session.css'
 
 class Session extends Component {
     state = {  }
@@ -17,9 +18,9 @@ class Session extends Component {
 
         return ( 
         <div>
-            <p>Sesion 25min</p>
-            <p>{this.props.minutesSession}</p>
-            <p>{this.props.seconds}</p>
+            <p className="title-time">Sesion: <span>25 min</span></p>
+            <p className="time">{this.props.minutesSession} : {this.props.seconds}</p>
+            
         </div> 
         );
     }

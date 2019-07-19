@@ -1,0 +1,16 @@
+.container {
+    text-align: center;
+    color : white;
+}
+
+.image {
+    height: 200px;
+    width: 140px;
+}
+
+@media (max-width: 374px){
+    .image {
+        height: 140px;
+    width: 100px;
+    }
+}
