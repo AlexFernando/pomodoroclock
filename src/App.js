@@ -9,7 +9,7 @@ import { faRedoAlt } from '@fortawesome/free-solid-svg-icons';
 
 class App extends Component {
   state = { 
-    minutesSession : 2,
+    minutesSession : 1,
     seconds : 0,
     minutesBreak : 5,
     changeBrake : false
@@ -25,7 +25,7 @@ class App extends Component {
 
   countdown = () => {
 
-      if(this.state.minutesSession === 0 && this.state.seconds === 0 && !this.state.changeBreak){
+      if(this.state.minutesSession === "00" && this.state.seconds === "00" && !this.state.changeBreak){
 
         console.log('Hola cuando 0 y 0')
         this.setState({
@@ -33,23 +33,26 @@ class App extends Component {
           seconds : 0,
         })
         //clearInterval(this.myInterval)
+
         console.log('antes del audio')
-        let audio = new Audio('https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3');
+        let audio = new Audio('https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg');
         audio.play();
         this.setState({
           changeBreak: true
         })
       }
+    
 
-      if(this.state.minutesSession === 0 && this.state.seconds === 0 && this.state.changeBreak){
+      if(this.state.minutesSession === "00" && this.state.seconds === "00" && this.state.changeBreak){
         console.log('Hola cuando HAY BREAK')
         console.log('antes del audio')
-        let audio = new Audio('https://s3.amazonaws.com/freecodecamp/drums/Heater-1.mp3');
+         
+        let audio = new Audio('https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg');
         audio.play();
         
         this.setState({
           
-          minutesSession : 2,
+          minutesSession : 1,
           seconds : 0,
           changeBreak: false
         })
@@ -57,15 +60,24 @@ class App extends Component {
 
 
       this.minutesRemaining = this.state.minutesSession;
-    console.log("hola")
       
-      if(this.state.seconds === 0) {
+      console.log("hola")
+
+    
+      if(this.state.seconds === 0 || this.state.seconds === "00") {
         console.log("hola 1")
         this.setState({
           minutesSession : this.minutesRemaining - 1,
-          seconds : 10,
+          seconds : 12,
         })
+
+        if(this.state.minutesSession < 10) { 
+          this.setState({
+            minutesSession: "0"+ this.state.minutesSession
+          })
+        }
       }
+
 
       this.secondsRemaining = this.state.seconds;
   
@@ -74,6 +86,14 @@ class App extends Component {
       this.setState({
         seconds: this.secondsRemaining
       })
+
+      if(this.secondsRemaining < 10) { 
+        this.setState({
+          seconds: "0"+ this.secondsRemaining
+        })
+      }
+
+      
 
   }
 
@@ -122,6 +142,8 @@ class App extends Component {
     </div> 
     );
   }
+  
+  
 }
  
 export default App;
