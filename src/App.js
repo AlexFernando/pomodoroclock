@@ -10,7 +10,7 @@ import './App.css'
 
 class App extends Component {
   state = { 
-    minutesSession : 2,
+    minutesSession : 25,
     seconds : "00",
     changeBrake : false
   }
@@ -25,48 +25,46 @@ class App extends Component {
 
   countdown = () => {
 
-      if(this.state.minutesSession === "00" && this.state.seconds === "00" && !this.state.changeBreak){
+      if(this.state.minutesSession === "00" && this.state.seconds === "01" && !this.state.changeBreak){
+        this.stopCountDown()
 
-        console.log('Hola cuando 0 y 0')
-        this.setState({
-          minutesSession : 2,
-          seconds : "00",
-        })
-        //clearInterval(this.myInterval)
-
-        console.log('antes del audio')
         let audio = new Audio('https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg');
+
         audio.play();
-        this.setState({
-          changeBreak: true
-        })
+
+        setTimeout(() => {
+          this.setState({
+            minutesSession : 5,
+            seconds : "00",
+            changeBreak: true
+          })
+          this.startCountdown()
+        }, 7000);   
       }
     
 
-      if(this.state.minutesSession === "00" && this.state.seconds === "00" && this.state.changeBreak){
-        console.log('Hola cuando HAY BREAK')
-        console.log('antes del audio')
+      if(this.state.minutesSession === "00" && this.state.seconds === "01" && this.state.changeBreak){
+        this.stopCountDown();
          
         let audio = new Audio('https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg');
+        
         audio.play();
 
+        setTimeout(() => {
+          this.setState({       
+            minutesSession : 25,
+            seconds : "00",
+            changeBreak: false
+          })
+          this.startCountdown();
+
+        }, 7000);
+
+        }
         
-        this.setState({
-          
-          minutesSession : 1,
-          seconds : "00",
-          changeBreak: false
-        })
-      }
-
-
       this.minutesRemaining = this.state.minutesSession;
-      
-      console.log("hola")
-
     
-      if(this.state.seconds === 0 || this.state.seconds === "00") {
-        console.log("hola 1")
+      if(this.state.minutesSession > 0 && this.state.seconds === "00") {
         this.setState({
           minutesSession : this.minutesRemaining - 1,
           seconds : 60,
@@ -83,7 +81,7 @@ class App extends Component {
       this.secondsRemaining = this.state.seconds;
   
       this.secondsRemaining--
-  
+
       this.setState({
         seconds: this.secondsRemaining
       })
@@ -93,9 +91,6 @@ class App extends Component {
           seconds: "0"+ this.secondsRemaining
         })
       }
-
-      
-
   }
 
   reloadCountdown = () => {
@@ -110,7 +105,6 @@ class App extends Component {
   }
  
   startCountdown = () => {
-    console.log("Hola");
       this.myInterval = setInterval(this.countdown, 1000);    
   }
 
