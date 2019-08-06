@@ -121,13 +121,13 @@ class App extends Component {
   render() { 
     return ( 
     <div className="container">
-        <h1>Pomodoro Clock</h1>
+        <h1 className="title">The Alpaca Pomodoro Clock</h1>
 
         <div>
           <img  className="image" src={logo}  alt="Logo" />
         </div>
 
-        <h2>Be productive!</h2>
+        <h2 className="subtitle">Be productive!</h2>
 
         <Session 
           minutesSession = {this.state.minutesSession}

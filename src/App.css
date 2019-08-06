@@ -1,6 +1,14 @@
 .container {
     text-align: center;
     color : white;
+    font-family: 'Abel', sans-serif;
+    font-family: 'Delius', cursive;  
+}
+
+.title {
+    font-weight: bold;
+    font-size: 2.3rem;
+    text-shadow: 1px 2px 5px rgb(253, 83, 32);
 }
 
 .image {
@@ -8,9 +16,19 @@
     width: 140px;
 }
 
-@media (max-width: 374px){
+.subtitle{
+    text-shadow: 1px 2px 5px rgb(253, 83, 32);
+}
+
+@media (max-width: 384px){
     .image {
         height: 140px;
-    width: 100px;
+        width: 100px;
+    }
+    .title {
+        font-size: 2.1rem;
+    }
+    .subtitle {
+        font-size: 1.2rem;
     }
 }
